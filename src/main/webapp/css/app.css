@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+div #box{
+	padding : 10px;
+	width : 70%;
+}
+span#title {
+	font-size: 2.0em;
+	font-weight : bold;
+}
+span#vertical {
+	font-size: 1.8em;
+	text-align : center;
+}
+#menubar table{
+	border-collapse: collapse;
+	height: 50px;
+	width : 100%;
+	text-align : center;
+}
+hr {
+	margin: 20px;
+	size : 4px;
+	border : 1.5px solid #779af5;
+}
+form div label {
+	width: 150px;
+}
+label {
+	display: inline-block;
+	width: 2px;
+	margin-top : 5px;
+}
+#buttongroup {
+	margin-top : 5px;
+	text-align: right;
+}
+#memid {
+ 	display: none;
+}
+#nec{
+	color : red;
+	font-weight : bold;
+}
+#wform{
+	border : 1px solid plack;
+	padding-left : 450px;
+}
+h1 {
+	text-align: center;
+}
+#content table{
+	text-align : center;
+	width : 50%;
+	margin : auto;
+	height : 500px;
+}
+th{
+	background : #779af5;
+	text-align : center;
+}
