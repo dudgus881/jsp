@@ -17,7 +17,7 @@ public class CookieSplit {
 		CookieSplit cookieSplit = new CookieSplit();
 		 
 		logger.debug(cookieSplit.getCookieValue("USERNM")); // 기대되는 값 brown
-		logger.debug(cookieSplit.getCookieValue("REMEMBERME")); // 기대되는 값 T
+		logger.debug(cookieSplit.getCookieValue("REMEMBERME")); // 기대되는 값 Y
 		logger.debug(cookieSplit.getCookieValue("XXXX")); // 기대되는 값  ""(WHITE SPACE)
 	}
 	
