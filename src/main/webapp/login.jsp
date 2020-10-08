@@ -19,8 +19,36 @@
 
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath() %>/js/js.cookie-2.2.1.min.js"></script>
 
 	<script type="text/javascript">
+
+	$(function(){
+		//remember me cookie확인
+		if(Cookies.get("REMEMBERME")== "Y"){
+			$("input[type=checkbox]").prop("checked", true);
+			$("#inputEmail").val(Cookies.get("USERNM"));
+		}	
+		//sign in 버튼이 클릭 되었을때 이벤트 핸들러
+		$("button").on("click", function(){
+			console.log("button_click");
+			if($("input[type=checkbox]").prop("checked")== true){
+				Cookies.set("REMEMBERME", "Y");
+				Cookies.set("USERNM", $("#inputEmail").val());
+
+			}
+			else{
+				Cookies.remove("REMEMBERME");
+				Cookies.remove("USERNM");
+			}
+
+			//submit
+			$("form").submit();
+		});
+	});
+	
 		function getCookieValue(cookieName) {
 			// 자바스크립트 로직
 			var cookies = document.cookie.split("; ")
@@ -31,6 +59,28 @@
 				}
 			}
 		}
+
+		function setCookie(cookieName , cookieValue, expires){
+
+			//"USERNM=brown; path=/; expires-Wed, 07 Oct 2020 00:38:35 GMT;"
+			
+			var today = new Date();
+			//현재날짜에서 미래로 + expires 만큼 할 날짜 구하기
+			today.setDate( today.getDate() + expires);
+			
+			document.cookie = cookieName + "=" + cookieValue + "; path=/; expires=" + today.toGMTString();
+			console.log(document.cookie); 
+		}
+
+		//해당 쿠키의 expires속성을 과거날짜로 변경
+		function deleteCookie(cookieName){
+
+			setCookie(cookieName, "", -1);
+			
+		}
+
+		
+		
 	</script>
 
   </head>
@@ -40,18 +90,18 @@
 	
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" action="<%=request.getContextPath() %>/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" id="inputEmail" name="userId" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
       </form>
 
     </div> <!-- /container -->
