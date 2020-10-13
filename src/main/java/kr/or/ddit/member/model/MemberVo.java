@@ -1,9 +1,8 @@
 package kr.or.ddit.member.model;
 
 public class MemberVo {
-
 	private String userid;
-	private String Pass;
+	private String pass;
 	public String getUserid() {
 		return userid;
 	}
@@ -11,20 +10,20 @@ public class MemberVo {
 		this.userid = userid;
 	}
 	public String getPass() {
-		return Pass;
+		return pass;
 	}
 	public void setPass(String pass) {
-		Pass = pass;
+		this.pass = pass;
 	}
 	@Override
 	public String toString() {
-		return "MemberVo [userid=" + userid + ", Pass=" + Pass + "]";
+		return "MemberVo [userid=" + userid + ", pass=" + pass + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Pass == null) ? 0 : Pass.hashCode());
+		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
 		result = prime * result + ((userid == null) ? 0 : userid.hashCode());
 		return result;
 	}
@@ -37,10 +36,10 @@ public class MemberVo {
 		if (getClass() != obj.getClass())
 			return false;
 		MemberVo other = (MemberVo) obj;
-		if (Pass == null) {
-			if (other.Pass != null)
+		if (pass == null) {
+			if (other.pass != null)
 				return false;
-		} else if (!Pass.equals(other.Pass))
+		} else if (!pass.equals(other.pass))
 			return false;
 		if (userid == null) {
 			if (other.userid != null)
@@ -49,11 +48,6 @@ public class MemberVo {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
 	
 	
 	

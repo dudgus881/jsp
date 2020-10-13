@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>basic.jsp</title>
 </head>
 <body>
 	<% //스크립틀릿 : 자바 로직을 작성하는 공간

@@ -24,10 +24,10 @@ public class BasicServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html; charset=utf-8"); 
+		//resp.setCharacterEncoding("utf-8");
 		
 		//writer 객체를 통해 html문서를 생성해준다.
 		PrintWriter writer = resp.getWriter();
-		
 		writer.println("<html>");
 		writer.println("	<head></head>");
 		writer.println("	<body>현재시간 : " + new Date() + "</body>");

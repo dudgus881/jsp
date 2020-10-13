@@ -25,7 +25,7 @@
 			<td>name</td>
 		</tr>
 		<tr>
-			<td>brwon</td>
+			<td>brown</td>
 			<td>브라운</td>
 		</tr>
 		<tr>
@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<td>sally</td>
-			<td>셀리</td>
+			<td>샐리</td>
 		</tr>
 	</table>
 </body>

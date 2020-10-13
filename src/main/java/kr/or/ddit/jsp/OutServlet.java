@@ -36,8 +36,8 @@ public class OutServlet extends HttpServlet {
 		//request 객체에 rangers라는 속성이름으로 레인저 정보를 저장
 		
 //		//1. : 불필요한 메모리 사용, 1번보다는 2번 방법으로
-//		List<String> rangers = rangerService.getRangers();
-//		request.setattribute("rangers",rangers);
+		/*List<String> rangers = new ArrayList<String>();
+		rangers = rangerService.getRangers();*/
 		
 		//2.
 		List<String> rangers = rangerService.getRangers();
@@ -45,10 +45,10 @@ public class OutServlet extends HttpServlet {
 		
 	
 		//out.jsp(아직 안만듬 webapp/jsp/out/jsp에 생성)로 요청 위임(forward)
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/out/jsp");
-		rd.forward(request, response);
+		/*RequestDispatcher rd = request.getRequestDispatcher("/jsp/out.jsp");
+		rd.forward(request, response);*/
 		//동일
-//		request.getRequestDispatcher("/jsp/out/jsp").forward(request, response);
+		request.getRequestDispatcher("/jsp/out.jsp").forward(request, response);
 		
 		//out.jsp에서는 rangers라는 속성을 꺼내서 loop를 돌며 화면에 출력
 		// ***out 객체를 이용

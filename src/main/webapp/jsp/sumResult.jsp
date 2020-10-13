@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath() %>/sumCalculation" method="POST">
-		start : <input type="text" name="start" value="1"/><br>
-		end : <input type="text" name="end" value="5"/><br>
-		<br>
-		<input type="submit" value="전송"/>
-	</form>
+	sumResult : <%= request.getAttribute("sumResult") %>
 </body>
 </html>

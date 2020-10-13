@@ -47,7 +47,12 @@ public class LoginServlet extends HttpServlet {
 		SELECT * FROM 회원
 		WHERE 회원아이디 = 파라미터로 넘어온 iserId;*/
 		
-		MemberVo memberVo =  memberService.getMember(userId);
+		MemberVo memberVo = memberService.getMember(userId);
+		
+		/*일치할 경우
+		main페이지 이동
+		일치하지 않을 경우
+		login페이지로 이동*/
 		
 		//디비에 등록된 회원이 없거나 비밀번호가 틀린경우(로그인 페이지)
 		if(memberVo == null || !memberVo.getPass().equals(password)) {
@@ -60,10 +65,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		
-		/*일치할 경우
-		main페이지 이동
-		일치하지 않을 경우
-		login페이지로 이동*/
+		
 		
 //		//쿠키정보
 //		Cookie[] cookies =  request.getCookies();

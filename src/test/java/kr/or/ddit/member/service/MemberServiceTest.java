@@ -10,8 +10,7 @@ import kr.or.ddit.member.model.MemberVo;
 public class MemberServiceTest {
 
 	@Test
-	public void getMembertest() {
-
+	public void getMemberTest() {
 		/***Given***/
 		MemberServiceI memberService = new MemberService();
 		String userId = "brown";
@@ -19,16 +18,15 @@ public class MemberServiceTest {
 		MemberVo answerMemberVo = new MemberVo();
 		answerMemberVo.setUserid("brown");
 		answerMemberVo.setPass("brownPass");
-		
+
 		/***When***/
 		MemberVo memberVo = memberService.getMember(userId);
-
+		
 		/***Then***/
 //		assertEquals("brown", memberVo.getUserId());
 //		assertEquals("passBrown", memberVo.getPassword());
 		
 		assertEquals(answerMemberVo, memberVo);
-	
 	}
 
 }

@@ -27,9 +27,9 @@ public class CookieSplit {
 			String result ="";
 			String[] cookies = cookieString.split("; ");
 			for (int i = 0; i < cookies.length ; i++) {
-				String[] cookie = cookies[i].split("=");
-				if(cookie[0].equals(cookieName)) {
-					result = cookie[1];
+				String[] cookies2  = cookies[i].split("=");
+				if(cookies2[0].equals(cookieName)) {
+					result = cookies2[1];
 				}
 			}
 		return result;

@@ -37,9 +37,6 @@ public class MemberDao implements MemberDaoI{
 		SqlSession sqlSession = MybatisUtil.getSqlSession();
 		List<MemberVo> memberList = sqlSession.selectList("member.selectAllMember");
 		
-//		sqlSession.commit();
-//		sqlSession.rollback();
-		
 		sqlSession.close();
 		
 		return memberList;

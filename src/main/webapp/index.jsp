@@ -8,5 +8,6 @@
 </head>
 <body>
 	머하는거지?
+	이 파일은 deploy.sh 이후에 생성된 파일입니다
 </body>
 </html>
