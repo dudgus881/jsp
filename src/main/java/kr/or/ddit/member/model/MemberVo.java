@@ -2,33 +2,30 @@ package kr.or.ddit.member.model;
 
 public class MemberVo {
 
-	private String userId;
-	private String password;
-	
-	
-	public String getUserId() {
-		return userId;
+	private String userid;
+	private String Pass;
+	public String getUserid() {
+		return userid;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return Pass;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPass(String pass) {
+		Pass = pass;
 	}
-	
 	@Override
 	public String toString() {
-		return "MemberVo [userId=" + userId + ", password=" + password + "]";
+		return "MemberVo [userid=" + userid + ", Pass=" + Pass + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((Pass == null) ? 0 : Pass.hashCode());
+		result = prime * result + ((userid == null) ? 0 : userid.hashCode());
 		return result;
 	}
 	@Override
@@ -40,18 +37,23 @@ public class MemberVo {
 		if (getClass() != obj.getClass())
 			return false;
 		MemberVo other = (MemberVo) obj;
-		if (password == null) {
-			if (other.password != null)
+		if (Pass == null) {
+			if (other.Pass != null)
 				return false;
-		} else if (!password.equals(other.password))
+		} else if (!Pass.equals(other.Pass))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (userid == null) {
+			if (other.userid != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!userid.equals(other.userid))
 			return false;
 		return true;
 	}
+	
+	
+	
+	
+	
 	
 	
 	

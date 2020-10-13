@@ -30,10 +30,10 @@ public class RangerServiceTest {
 	@Test
 	public void getRangersTest() {
 		/***Given : 주어진 상황 기술 ***/
-		RangerServiceI rangerservice = new RangerService();
+		RangerServiceI rangerService = new RangerService();
 		
 		/***When : 행위 ***/
-		List<String> rangers = rangerservice.getRangers();
+		List<String> rangers = rangerService.getRangers();
 		
 		/***Then : 결과 ***/
 		assertNotNull(rangers);
