@@ -4,8 +4,11 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import kr.or.ddit.common.model.PageVo;
+import kr.or.ddit.db.MybatisUtil;
 import kr.or.ddit.member.model.MemberVo;
 
 public class MemberDaoTest {
@@ -24,8 +27,8 @@ public class MemberDaoTest {
 		MemberVo memberVo = memberDao.getMember(userId);
 		
 		/***Then***/
-//		assertEquals("brown", memberVo.getUserId());
-//		assertEquals("passBrown", memberVo.getPassword());
+//		assertEquals("brown", memberVo.getUserid());
+//		assertEquals("passBrown", memberVo.getPass());
 		
 		assertEquals(answerMemberVo, memberVo);
 	}
@@ -34,14 +37,31 @@ public class MemberDaoTest {
 	public void selectAllMemberTest() {
 		/***Given***/
 		MemberDaoI memberDao = new MemberDao();
+		PageVo pageVo = new PageVo(1,7);
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+//		int page = 1;
 		
 		/***When***/
-		List<MemberVo> memberList = memberDao.selectAllMember();
+		List<MemberVo> memberList = memberDao.selectMemberPageList(sqlSession,pageVo);
 
 		/***Then***/
 		assertEquals(5, memberList.size());
 		//assertEquals("brown", memberList.get(0).getUserid());
 	}
+	
+	@Test
+	public void selectMemberTotalCnt() {
+		/***Given***/
+		MemberDaoI memberDao = new MemberDao();
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		/***When***/
+		int totalCnt = memberDao.selectMemberTotalCnt(sqlSession);
+
+		/***Then***/
+		assertEquals(15, totalCnt);
+	}
+	
+	
 }
 
 

@@ -2,8 +2,12 @@ package kr.or.ddit.member.service;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
 
+import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.dao.MemberDao;
 import kr.or.ddit.member.model.MemberVo;
 
@@ -23,10 +27,30 @@ public class MemberServiceTest {
 		MemberVo memberVo = memberService.getMember(userId);
 		
 		/***Then***/
-//		assertEquals("brown", memberVo.getUserId());
-//		assertEquals("passBrown", memberVo.getPassword());
+		assertEquals("brown", memberVo.getUserid());
+		assertEquals("passBrown", memberVo.getPass());
 		
-		assertEquals(answerMemberVo, memberVo);
+//		assertEquals(answerMemberVo, memberVo);
+	}
+	
+	@Test
+	public void selectMemberPageListTest() {
+		/***Given***/
+		MemberServiceI memberService = new MemberService();
+		PageVo pageVo = new PageVo(1,7);
+		
+		/***When***/
+
+		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
+		List<MemberVo> memberList = (List<MemberVo>)map.get("memberList");
+		
+		//member의 전체 수 확인
+		int pages = (int)map.get("pages");
+		
+		/***Then***/
+		assertEquals(7, memberList.size());
+		assertEquals(3, pages);
+
 	}
 
 }
