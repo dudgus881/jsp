@@ -76,6 +76,9 @@
 				<td>${member.userid }</td>
 				<td>${member.usernm }</td>
 				<td>${member.alias }</td>
+				
+				<!--  format : yyyy-MM-dd -->
+				<td><fmt:formatDate ></fmt:formatDate></td>
 				<td>${member.reg_dt }</td>
 			</tr>
 		</c:forEach>
