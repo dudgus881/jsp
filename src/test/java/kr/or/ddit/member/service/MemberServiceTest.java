@@ -33,7 +33,7 @@ public class MemberServiceTest {
 		
 		/***Then***/
 		assertEquals("brown", memberVo.getUserid());
-		assertEquals("passBrown", memberVo.getPass());
+		assertEquals("brownPass", memberVo.getPass());
 		
 //		assertEquals(answerMemberVo, memberVo);
 	}
@@ -64,8 +64,8 @@ public class MemberServiceTest {
 		Locale[] locales =  SimpleDateFormat.getAvailableLocales();
 		
 		for(Locale locale : locales) {
-			logger.debug(locale.toString());
-//			logger.debug("{}",locale);
+//			logger.debug(locale.toString());
+			logger.debug("{}",locale);
 		}
 	}
 }

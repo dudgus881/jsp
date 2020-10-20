@@ -27,30 +27,42 @@ public class MemberDaoTest {
 		MemberVo memberVo = memberDao.getMember(userId);
 		
 		/***Then***/
-//		assertEquals("brown", memberVo.getUserid());
-//		assertEquals("passBrown", memberVo.getPass());
+		assertEquals("brown", memberVo.getUserid());
+		assertEquals("brownPass", memberVo.getPass());
 		
-		assertEquals(answerMemberVo, memberVo);
+//		assertEquals(answerMemberVo, memberVo);
 	}
 
 	@Test
 	public void selectAllMemberTest() {
 		/***Given***/
 		MemberDaoI memberDao = new MemberDao();
-		PageVo pageVo = new PageVo(1,7);
-		SqlSession sqlSession = MybatisUtil.getSqlSession();
-//		int page = 1;
 		
 		/***When***/
-		List<MemberVo> memberList = memberDao.selectMemberPageList(sqlSession,pageVo);
+		List<MemberVo> memberList = memberDao.selectAllMember();
 
 		/***Then***/
-		assertEquals(5, memberList.size());
+		assertEquals(15, memberList.size());
 		//assertEquals("brown", memberList.get(0).getUserid());
 	}
 	
 	@Test
-	public void selectMemberTotalCnt() {
+	public void selectMemberPageListTest() {
+		/***Given***/
+		MemberDaoI memberDao = new MemberDao();
+		PageVo pageVo = new PageVo(1, 7);
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		//int page = 1;
+
+		/***When***/
+		List<MemberVo> memberList = memberDao.selectMemberPageList(sqlSession, pageVo);
+
+		/***Then***/
+		assertEquals(7, memberList.size());
+	}
+	
+	@Test
+	public void selectMemberTotalCntTest() {
 		/***Given***/
 		MemberDaoI memberDao = new MemberDao();
 		SqlSession sqlSession = MybatisUtil.getSqlSession();

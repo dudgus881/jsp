@@ -25,10 +25,16 @@
     
 	<script>
 	$(function(){
+		//remember me cookie 확인
+		if( Cookies.get("REMEMBERME") == "Y"){
+			$("input[type=checkbox]").prop("checked", true);
+			$("#inputEmail").val(Cookies.get("USERNM"));	
+		}
 		//sign in 버튼이 클릭 되었을 때 이벤트 핸들러
 		$("button").on("click", function(){
+			console.log("button_click");
 
-			if($("input[type=checkbox]").prop("checked")){
+			if($("input[type=checkbox]").prop("checked")== true){
 				Cookies.set("REMEMBERME", "Y");
 				Cookies.set("USERNM", $("#inputEmail").val());
 			}
@@ -40,11 +46,6 @@
 			//submit
 			$("form").submit();
 		});	
-		//remember me cookie 확인
-		if( Cookies.get("REMEMBERME") == "Y"){
-			$("input[type=checkbox]").prop("checked", true);
-			$("#inputEmail").val(Cookies.get("USERNM"));	
-		}
 		
 	});
 		function getCookieValue(cookieName){
