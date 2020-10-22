@@ -9,9 +9,8 @@ import kr.or.ddit.member.model.MemberVo;
 public interface MemberServiceI {
 
 	MemberVo getMember(String userId);
-
+	
 	List<MemberVo> selectAllMember();
-
 
 	Map<String, Object> selectMemberPageList(PageVo pageVo);
 

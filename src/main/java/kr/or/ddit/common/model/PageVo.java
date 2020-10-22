@@ -15,7 +15,7 @@ public class PageVo {
 	public PageVo() {
 		
 	}
-	public PageVo(int page2, int pageSize2) {
+	public PageVo(int page, int pageSize) {
 		this.page = page;
 		this.pageSize = pageSize;
 	}

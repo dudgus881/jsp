@@ -8,13 +8,12 @@ import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.model.MemberVo;
 
 public interface MemberDaoI {
+	
 	MemberVo getMember(String userId);
 	
 	List<MemberVo> selectAllMember();
 
-	List<MemberVo> selectMemberPageList(SqlSession sqlSession,PageVo pageVo);
+	List<MemberVo> selectMemberPageList(SqlSession sqlSession, PageVo pageVo);
 	
 	int selectMemberTotalCnt(SqlSession sqlSession);
-
-
 }
