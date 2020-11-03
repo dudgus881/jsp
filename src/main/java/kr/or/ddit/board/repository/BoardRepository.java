@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.ddit.board.model.BoardVo;
 
 
-//@Repository("boardRepository")
+@Repository("boardRepository")
 public class BoardRepository implements BoardRepositoryI{
 
 	@Override

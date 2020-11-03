@@ -8,10 +8,10 @@ import kr.or.ddit.board.model.BoardVo;
 import kr.or.ddit.board.repository.BoardRepositoryI;
 
 // <bean id="boardService" />
-//@Service("boardService")
+@Service("boardService")
 public class BoardService implements BoardServiceI{
 
-//	@Resource(name = "boardRepository")
+	@Resource(name = "boardRepository")
 	private BoardRepositoryI boardRepository;
 
 	public BoardRepositoryI getBoardRepository() {
