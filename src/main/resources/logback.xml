@@ -17,7 +17,7 @@
    <logger name="kr.or.ddit" level="debug">
        <appender-ref ref="STDOUT" />
    </logger> 
-   <logger name="org.springframwork" level="debug">
+   <logger name="org.springframework" level="debug">
        <appender-ref ref="STDOUT" />
    </logger> 
 <!--    <root level="DEBUG"> -->

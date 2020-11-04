@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.pager{
+	float: left;
+	margin: 5px;
+}
+
+#btngroup1{
+	text-align : center;
+	margin-left : 10%; 
+}
+.paging{
+/* 	margin: 5px; */
+}
+.rep{
+	background: Lavender;
+	border: 1px solid white;
+	margin: 2px;
+}
+.cont{
+	font-weight:bold;
+}
+hr{
+  clear: both;
+  }
+  input[name=reply] {
+	height: 30px;
+	vertical-align: top;
+}
+textarea {
+	resize: none;
+}
+#modifyForm{
+	display: none;
+}
+#wModal{
+	display: none;
+}
+label{
+	display: inline-block;
+	width: 100px;
+	height: 30px;
+}

@@ -1,4 +1,4 @@
-package kr.or.ddit.login;
+package kr.or.ddit.login.web;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -27,6 +27,6 @@ public class LoginServlet extends HttpServlet {
 		logger.debug("loginServlet doGet");
 		logger.debug("UNT_CD parameter : {}", request.getParameter("UNT_CD"));
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
-		request.getServletContext().getNamedDispatcher("default").forward(request, response);;
+		request.getServletContext().getNamedDispatcher("default").forward(request, response);
 	}
 }
