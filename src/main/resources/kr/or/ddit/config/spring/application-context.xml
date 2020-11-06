@@ -44,6 +44,13 @@
 	
 	</bean>
 	
+	<!-- 정적자원 패밍 처리 
+		1. url 단축을 목적
+		2. WEB-INF : 외부에서 접근 불가능한 공간에 저장된 자원들 접근 매핑-->
+		<!-- localhost/resources/style.css -->
+		<mvc:resources mapping="/resources/**" location="/WEB-INF/views/error/" />
+		
+	
 	
 	
 	
