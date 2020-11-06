@@ -11,7 +11,7 @@ public class MemberVo {
 	private String addr2;
 	private String zipcode;
 	private String filename;
-	private String realfilename;
+	private String realFilename;
 	private Date reg_dt;
 	
 	public MemberVo() {
@@ -19,7 +19,7 @@ public class MemberVo {
 	}
 	
 	public MemberVo(String userid, String pass, String usernm, String alias, String addr1, String addr2, String zipcode,
-			String filename, String realfilename) {
+			String filename, String realFilename) {
 		this.userid = userid;
 		this.pass = pass;
 		this.usernm = usernm;
@@ -28,75 +28,96 @@ public class MemberVo {
 		this.addr2 = addr2;
 		this.zipcode = zipcode;
 		this.filename = filename;
-		this.realfilename = realfilename;
+		this.realFilename = realFilename;
 	}
-	
+
 	public String getUserid() {
 		return userid;
 	}
+
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+
 	public String getPass() {
 		return pass;
 	}
+
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+
 	public String getUsernm() {
 		return usernm;
 	}
+
 	public void setUsernm(String usernm) {
 		this.usernm = usernm;
 	}
+
 	public String getAlias() {
 		return alias;
 	}
+
 	public void setAlias(String alias) {
 		this.alias = alias;
 	}
+
 	public String getAddr1() {
 		return addr1;
 	}
+
 	public void setAddr1(String addr1) {
 		this.addr1 = addr1;
 	}
+
 	public String getAddr2() {
 		return addr2;
 	}
+
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
 	}
+
 	public String getZipcode() {
 		return zipcode;
 	}
+
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+
 	public String getFilename() {
 		return filename;
 	}
+
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	public String getRealfilename() {
-		return realfilename;
+
+	public String getRealFilename() {
+		return realFilename;
 	}
-	public void setRealfilename(String realfilename) {
-		this.realfilename = realfilename;
+
+	public void setRealFilename(String realFilename) {
+		this.realFilename = realFilename;
 	}
+
 	public Date getReg_dt() {
 		return reg_dt;
 	}
+
 	public void setReg_dt(Date reg_dt) {
 		this.reg_dt = reg_dt;
 	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [userid=" + userid + ", pass=" + pass + ", usernm=" + usernm + ", alias=" + alias + ", addr1="
-				+ addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + ", filename=" + filename + ", realfilename="
-				+ realfilename + ", reg_dt=" + reg_dt + "]";
+				+ addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + ", filename=" + filename + ", realFilename="
+				+ realFilename + ", reg_dt=" + reg_dt + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -106,13 +127,14 @@ public class MemberVo {
 		result = prime * result + ((alias == null) ? 0 : alias.hashCode());
 		result = prime * result + ((filename == null) ? 0 : filename.hashCode());
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
-		result = prime * result + ((realfilename == null) ? 0 : realfilename.hashCode());
+		result = prime * result + ((realFilename == null) ? 0 : realFilename.hashCode());
 		result = prime * result + ((reg_dt == null) ? 0 : reg_dt.hashCode());
 		result = prime * result + ((userid == null) ? 0 : userid.hashCode());
 		result = prime * result + ((usernm == null) ? 0 : usernm.hashCode());
 		result = prime * result + ((zipcode == null) ? 0 : zipcode.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -147,10 +169,10 @@ public class MemberVo {
 				return false;
 		} else if (!pass.equals(other.pass))
 			return false;
-		if (realfilename == null) {
-			if (other.realfilename != null)
+		if (realFilename == null) {
+			if (other.realFilename != null)
 				return false;
-		} else if (!realfilename.equals(other.realfilename))
+		} else if (!realFilename.equals(other.realFilename))
 			return false;
 		if (reg_dt == null) {
 			if (other.reg_dt != null)
@@ -174,6 +196,7 @@ public class MemberVo {
 			return false;
 		return true;
 	}
+	
 	
 	
 	

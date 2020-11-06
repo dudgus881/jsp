@@ -12,7 +12,7 @@
 	 server - servlet @MultipartConfig
 	 		- spring Framworked multipartResolver -->
 	<h1>파일 업로드</h1>
-	<form action="${cp} /fileupload/upload" method="post"  enctype="multipart/form-data">
+	<form action="${cp}/fileupload/upload" method="post"  enctype="multipart/form-data">
 		userid : <input type="text" name="userid" value="브라운"><br>
 		file : <input type="file" name="file"><br>
 		<br>

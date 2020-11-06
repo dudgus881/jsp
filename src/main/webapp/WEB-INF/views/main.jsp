@@ -37,15 +37,15 @@
 			<div class="row">
 				<div class="col-sm-8 blog-main">
 					<div class="blog-post">
-						<h2 class="blog-post-title">JSP</h2>
+						<h2 class="blog-post-title">SPRING</h2>
 						<p class="blog-post-meta">
-							2017.10.30, room 201
+							2020.11.05, room 404
 						</p>
 
-						<p>jsp를 통한 웹 프로그래밍 학습</p><hr>
+						<p>spring를 통한 웹 프로그래밍 학습</p><hr>
 			
 						<h3>상세내역</h3>
-						<p>JSP과정에서는 다음과 같은 내용을 학습한다.</p>
+						<p>SPRING과정에서는 다음과 같은 내용을 학습한다.</p>
 						<ul>
 							<li>servlet 동작원리</li>
 							<li>jsp와 servlet의 관계</li>

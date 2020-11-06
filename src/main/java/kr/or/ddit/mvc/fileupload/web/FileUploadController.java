@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,13 +28,13 @@ public class FileUploadController {
 	//jsp : /WEB-INF/views/fileupload/fileupload.jsp
 	//테스트 코드 까지 작성
 	
-	@RequestMapping("/view")
+	@RequestMapping(path="/view", method = RequestMethod.GET)
 	public String view() {
 		
 		return "fileupload/fileupload";
 	}
 	//파일 업로드 처리 메서드
-	@RequestMapping("/upload")
+	@RequestMapping(path="/upload", method = RequestMethod.POST)
 	public String upload(String userid,@RequestPart("file") MultipartFile file) {
 		
 		logger.debug("userid:{}",userid);

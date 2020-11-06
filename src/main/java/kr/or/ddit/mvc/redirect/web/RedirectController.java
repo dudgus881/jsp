@@ -19,7 +19,7 @@ public class RedirectController {
 	@RequestMapping("/process")
 	public String process(Model model, HttpSession session,
 						RedirectAttributes ra) {
-		logger.debug("RedirectController.process");
+		logger.debug("RedirectController.process()");
 		
 		model.addAttribute("msg","hello,world");
 		session.setAttribute("msg_s", "hello, world_session");
