@@ -1,0 +1,8 @@
+excel 다운로드하기
+
+.xml ==> ms-office에서 xls 형식에서는 html을 화면에 표시가능 //사용자에게 다운로드를 할수있게?
+.xlsx ==> html 표현하는게 불가능
+java에서 엑셀 파일을 다룰수 있는 api : apache-poi
+
+view : Model에 저장된 header, data 속성을 읽어 poi 라이브러리를 이용하여
+		엑셀 파일로 생성, 응답
