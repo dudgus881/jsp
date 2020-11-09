@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Part;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -15,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.common.model.PageVo;
@@ -33,52 +31,56 @@ public class MemberController {
 	private MemberServiceI memberService;
 	
 	@RequestMapping(path = "/list", method = {RequestMethod.GET, RequestMethod.POST})
-	public String list(@RequestParam(name = "page", required = false, defaultValue = "1") int page,
-					   @RequestParam(name = "pageSize", required = false, defaultValue = "5") int pageSize,
+	public String list(@RequestParam(name = "page", required = false, defaultValue = "1") String page,
+					   @RequestParam(name = "pageSize", required = false, defaultValue = "5") String pageSize,
 					   Model model) {
 				
 		//pageVo : page, pageSize
-		PageVo pageVo = new PageVo(page, pageSize);
+		PageVo pageVo = new PageVo(Integer.parseInt(page), Integer.parseInt(pageSize));
 		
 		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
 		model.addAttribute("memberList", map.get("memberList"));
 		model.addAttribute("pages", map.get("pages"));
+		model.addAttribute("page", page);
 				
-		return "member/list";
+		//return "member/list";
+		//return "tiles.memberList";
+		return "tiles/member/memberListContent";
 	}
 	
 	@RequestMapping("/member")
 	public String member(String userid, Model model) {
-		
 
 		MemberVo memberVo = memberService.getMember(userid);
 		
 		model.addAttribute("memberVo", memberVo);
 		
-		return "member/member";
+		//return "member/member";
+		return "tiles/member/memberContent";
 	}
 	
 	@RequestMapping(path="/regist", method = {RequestMethod.GET})
 	public String regist() {
-		return "member/regist";
+		//return "member/regist";
+		return "tiles/member/registContent";
 	}
 	
 	@RequestMapping(path="/regist", method = {RequestMethod.POST})
 	public String regist(@Valid MemberVo memberVo, BindingResult br, MultipartFile profile) {
-//	public String regist(@Valid JSRMemberVo memberVo, BindingResult br, MultipartFile profile) {
+	//public String regist(@Valid JSRMemberVo memberVo, BindingResult br, MultipartFile profile) {
 		
-		//new MemberVoValidator().validate(memberVo, br); //MemberVo쓸때 JSRMemberVo쓸때는 사용안함
+		//new MemberVoValidator().validate(memberVo, br);
 		
 		//검증을 통과하지 못했으므로 사용자 등록 화면으로 이동
 		if(br.hasErrors()) {
-			return "member/regist";
+			//return "member/regist";
+			return "tiles/member/registContent";
 		}
 		
 		String realFilename = profile.getOriginalFilename();
 		String extension =  FileUploadUtil.getExtension(realFilename);
 		String fileName = UUID.randomUUID().toString();
 		String filePath = "";
-		
 		if(profile.getSize() > 0) {
 			filePath = "D:\\profile\\" + fileName + "." + extension;
 			File file = new File(filePath);
@@ -101,14 +103,16 @@ public class MemberController {
 		}
 		//1건이 아닐때 : 비정상 - 사용자가 데이터를 다시 입력할 수 있도록 등록페이지로 이동
 		else {
-			return "member/regist";
+			//return "member/regist";
+			return "tiles/member/registContent";
 		}
 	}
 	
 	@RequestMapping(path="/update", method= {RequestMethod.GET})
 	public String update(String userid, Model model) {
 		model.addAttribute("memberVo", memberService.getMember(userid));
-		return "member/update";
+		//return "member/update";
+		return "tiles/member/updateContent";
 	}
 	
 	@RequestMapping(path="/update", method= {RequestMethod.POST})
@@ -144,7 +148,8 @@ public class MemberController {
 		}
 		//1건이 아닐때 : 비정상 - 사용자가 데이터를 다시 입력할 수 있도록 등록페이지로 이동
 		else {
-			return "member/update";
+			//return "member/update";
+			return "tiles/member/updateContent";
 		}
 	}
 }

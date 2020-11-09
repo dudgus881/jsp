@@ -42,6 +42,7 @@
 			</table>
 		</div>
 
+
 		<a href="${cp }/member/regist" class="btn btn-default pull-right">사용자
 			등록</a>
 		<div class="text-center">

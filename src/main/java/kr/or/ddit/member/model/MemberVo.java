@@ -2,8 +2,11 @@ package kr.or.ddit.member.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
+@XmlRootElement(name="memberVo")
 public class MemberVo {
 	private String userid;
 	private String pass;
@@ -19,9 +22,8 @@ public class MemberVo {
 	private String realFilename;
 	private Date reg_dt;
 	
-	public MemberVo(String userid, String usernm ) {
-		this.userid = userid;
-		this.usernm = usernm;
+	public MemberVo() {
+
 	}
 	
 	public MemberVo(String userid, String pass, String usernm, String alias, String addr1, String addr2, String zipcode,
@@ -35,6 +37,10 @@ public class MemberVo {
 		this.zipcode = zipcode;
 		this.filename = filename;
 		this.realFilename = realFilename;
+	}
+	public MemberVo(String userid, String usernm ) {
+		this.userid = userid;
+		this.usernm = usernm;
 	}
 
 	public String getUserid() {
