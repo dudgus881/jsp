@@ -40,7 +40,7 @@ function initData(){
 
 </script>
 
-tiles
+tiles 사용자 등록
 <form id="frm" class="form-horizontal" role="form"
 					  action="${cp }/member/regist" method="POST"
 					  enctype="multipart/form-data">

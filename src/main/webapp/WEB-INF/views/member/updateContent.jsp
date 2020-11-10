@@ -38,7 +38,7 @@
 	}
 </script>
 
-tiles
+tiles수정
 <form id="frm" class="form-horizontal" role="form"
 	action="${cp }/member/update" method="POST"
 	enctype="multipart/form-data">
