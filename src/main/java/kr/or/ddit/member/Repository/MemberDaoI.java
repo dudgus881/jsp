@@ -1,6 +1,7 @@
 package kr.or.ddit.member.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -13,13 +14,15 @@ public interface MemberDaoI {
 	
 	List<MemberVo> selectAllMember();
 
-	List<MemberVo> selectMemberPageList(SqlSession sqlSession, PageVo pageVo);
+//	List<MemberVo> selectMemberPageList();
+	List<MemberVo> selectMemberPageList(PageVo pageVo);
 	
-	int selectMemberTotalCnt(SqlSession sqlSession);
+	int selectMemberTotalCnt();
 	
 	int insertMember(MemberVo memberVo);
 	
 	int deleteMember(String userid);
 
 	int updateMember(MemberVo memberVo);
+
 }

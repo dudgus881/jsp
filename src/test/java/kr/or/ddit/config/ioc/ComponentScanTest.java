@@ -14,7 +14,9 @@ import kr.or.ddit.board.repository.BoardRepositoryI;
 import kr.or.ddit.board.service.BoardServiceI;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/ioc/component-scan.xml"})
+@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/ioc/component-scan.xml",
+									"classpath:kr/or/ddit/config/spring/datasource-context_dev.xml",
+									"classpath:kr/or/ddit/config/spring/transaction-context.xml"})
 public class ComponentScanTest {
 
 	@Resource(name="boardRepository")
