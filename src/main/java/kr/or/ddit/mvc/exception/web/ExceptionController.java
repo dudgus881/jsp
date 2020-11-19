@@ -8,75 +8,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.ddit.mvc.exception.NoFileException;
 
+
 @Controller
 public class ExceptionController {
+	
+	
 	private static final Logger logger = LoggerFactory.getLogger(ExceptionController.class);
 
+	
 	@RequestMapping("/exception/view")
 	public String view() {
-		
 		logger.debug("ExceptionController.view()");
-		throw new ArithmeticException(); //강제로 예외시키기
-		//return ""; //메서드에 리턴이 없어도 컴파일이 된다?? 왜??
+		throw new ArithmeticException();
+//		return "";
 	}
+	
 	
 	@RequestMapping("/exception/respSt")
 	public String responseStatus() throws NoFileException {
 		try {
-			//파일을 찾는 로직이 있음.
-			//찾고자 하는 파일이 없어서 예외 발생
+			
+			// 파일을 찾는 로직이 있다.
+			// 찾고자 하는 파일이 없어서 예외발생
 			throw new Exception();
 		}catch(Exception e) {
 			
-			//Exception 대신 우리가 만든 NoFileException으로 처리
-			//NoFileException은 @ResponseStatus 설정에 의해
-			//404 코드로 사용자에게 응답 처리함
+			// Exception 대신 우리가 만든 NoFileException으로 처리
+			// NoFileException은 @ResponseStatus 설정에 의해
+			// 404 코드로 사용자에게 응답 처리됨
+			
 			throw new NoFileException();
 		}
-		
-		
-		//return "";
+//		return "";
 	}
+	
+
+	
 	
 //	@ExceptionHandler({ArithmeticException.class})
 //	public String handler() {
 //		logger.debug("ExceptionController.handler()");
 //		
-//		//에러를 처리할 화면
+//		// 에러를 처리할 화면으로 이동
 //		return "exception/arithmetic";
 //	}
 	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

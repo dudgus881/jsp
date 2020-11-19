@@ -1,20 +1,26 @@
 package kr.or.ddit.board.model;
 
-public class BoardVo {
+public class BoardVO {
 
 	private int boardNo;
-	private String title;
+	private String boardTitle;
 	private String content;
 	
-	public BoardVo() {
-		
+	
+	
+	public BoardVO() {
+
 	}
 	
-	public BoardVo(int boardNo, String title, String content) {
+	
+	public BoardVO(int boardNo, String boardTitle, String content) {
 		this.boardNo = boardNo;
-		this.title = title;
+		this.boardTitle = boardTitle;
 		this.content = content;
 	}
+	
+	
+	
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -22,11 +28,11 @@ public class BoardVo {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-	public String getTitle() {
-		return title;
+	public String getBoardTitle() {
+		return boardTitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBoardTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
 	}
 	public String getContent() {
 		return content;
@@ -37,8 +43,7 @@ public class BoardVo {
 	
 	@Override
 	public String toString() {
-		return "BoardVo [boardNo=" + boardNo + ", title=" + title + ", content=" + content + "]";
+		return "BoardVO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", content=" + content + "]";
 	}
-	
 	
 }

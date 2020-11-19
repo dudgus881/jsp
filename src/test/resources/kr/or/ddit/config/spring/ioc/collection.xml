@@ -5,33 +5,39 @@
 
 
 	<bean id="collectionBean" class="kr.or.ddit.ioc.CollectionBean">
-		<property name="list">
+		
+		<property name="list" >
 			<list>
 				<value>brown</value>
 				<value>sally</value>
-				<value>cony</value>
+				<value>moon</value>
 			</list>
 		</property>
 		
-		<property name="map">
+		
+		<property name="map" >
 			<map>
 				<entry key="name" value="brown" />
-			</map>
+			</map>		
 		</property>
 		
-		<property name="properties">
+		
+		<property name="properties" >
 			<props>
-				<prop key="jdbc.user">yyh</prop>
+				<prop key="jdbc.user">SHS</prop>
 				<prop key="jdbc.pass">java</prop>
 			</props>
 		</property>
 		
-		<property name="set">
+		
+		<property name="set" >
 			<set>
 				<value>brown</value>
 				<value>sally</value>
-				<value>cony</value>
+				<value>moon</value>
 			</set>
 		</property>
+		
+		
 	</bean>
 </beans>

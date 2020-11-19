@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>    
-
-
-
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,24 +11,40 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/css/favicon.ico">
 
 <title>Jsp</title>
 
-<%@ include file="/WEB-INF/views/layout/commonLib.jsp"%>
+<!-- <script src="/js/jquery/jquery-1.12.4.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/css/bootstrap.js"></script><!-- Custom styles for this template -->
+
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
+<link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/blog.css" rel="stylesheet">
 
 </head>
+
 <body>
-	<tiles:insertAttribute name="header"/>
+
+	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<tiles:insertAttribute name="header" />
+	</nav>
+	
+	
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">			
-				<tiles:insertAttribute name="left"/>
-			</div>
+			<tiles:insertAttribute name="left" />
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<tiles:insertAttribute name="content"/>
+			
+				<tiles:insertAttribute name="content" />
+				
 			</div>
 		</div>
 	</div>
+	
+	
+	
 </body>
 </html>

@@ -4,19 +4,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>File Upload</title>
+<title>Insert title here</title>
 </head>
 <body>
-<!-- client form method : post 
-	 			 encType : multipart/form-date 
-	 server - servlet @MultipartConfig
-	 		- spring Framworked multipartResolver -->
-	<h1>파일 업로드</h1>
-	<form action="${cp}/fileupload/upload" method="post"  enctype="multipart/form-data">
-		userid : <input type="text" name="userid" value="브라운"><br>
-		file : <input type="file" name="file"><br>
-		<br>
-		<input type="submit" value="전송">
+
+	<!-- client form method : post
+		 			 encType : multipart/form-data
+		 server - servlet : @MultipartConfig
+		 		- spring framework : @MultipartResolver -->
+	<form action="${cp }/fileupload/upload" method="post" enctype="multipart/form-data">
+		userid : <input type="text" name="userid" value="brown" /><br>
+		file : <input type="file" name="file" /><br>
+		<input type="submit" value="전송"	 /><br>
 	</form>
+
 </body>
 </html>

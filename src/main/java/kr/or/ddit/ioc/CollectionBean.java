@@ -19,31 +19,41 @@ public class CollectionBean {
 	public void setMap(Map<String, String> map) {
 		this.map = map;
 	}
+
+
 	public Set<String> getSet() {
 		return set;
 	}
 	public void setSet(Set<String> set) {
 		this.set = set;
 	}
+
+
 	public List<String> getList() {
 		return list;
 	}
 	public void setList(List<String> list) {
 		this.list = list;
 	}
+	
+
 	public Properties getProperties() {
 		return properties;
 	}
 	public void setProperties(Properties properties) {
 		this.properties = properties;
 	}
-	
+
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "CollectionBean [map=" + map + ", set=" + set + ", list=" + list + ", properties=" + properties + "]";
 	}
-	
-	
-	
-	
+
 }

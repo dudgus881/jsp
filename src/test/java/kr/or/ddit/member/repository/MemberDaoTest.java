@@ -7,108 +7,102 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.or.ddit.ModelTestConfig;
-import kr.or.ddit.common.model.PageVo;
-import kr.or.ddit.member.Repository.MemberDaoI;
-import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.common.model.PageVO;
+import kr.or.ddit.member.ModelTestConfig;
+import kr.or.ddit.member.dao.MemberDaoI;
+import kr.or.ddit.member.model.MemberVO;
+
 
 public class MemberDaoTest extends ModelTestConfig{
 
-	@Resource(name="memberDao")
-	private MemberDaoI memberDao;
-
+	
+	@Resource(name="memberRepository")
+	private MemberDaoI memDao;
+	
+	
+	
 	@Test
 	public void getMemberTest() {
 		/***Given***/
-		String userid = "brown";
-
+		
 		/***When***/
-		MemberVo memberVo = memberDao.getMember(userid);
-
+		MemberVO member = memDao.getMember("brown");
+		
 		/***Then***/
-		assertEquals("브라운", memberVo.getUsernm());
+		assertEquals("브라운", member.getUsernm());
 	}
+	
 	
 	@Test
 	public void selectAllMemberTest() {
 		/***Given***/
 
 		/***When***/
-		List<MemberVo> memberList = memberDao.selectAllMember();
-
-		/***Then***/
-		assertTrue(memberList.size() > 13 );
-	}
-	
-	@Test
-	public void selectMemberPageList() {
-		/***Given***/
-		PageVo pageVo = new PageVo(1, 5);
+		List<MemberVO> memList = memDao.selectAllMember();
 		
-		/***When***/
-		List<MemberVo> memberList = memberDao.selectMemberPageList(pageVo);
-
 		/***Then***/
-		assertEquals(5, memberList.size());
+		assertTrue(memList.size() > 13);
 	}
 	
+	
+	
 	@Test
-	public void selectMemberTotalCnt() {
+	public void selectMemberPageTest() {
+		/***Given***/
+		PageVO pageVO = new PageVO(1, 5);
+
+		/***When***/
+		List<MemberVO> memList = memDao.selectMemberPage(pageVO);
+
+		/***Then***/
+		assertEquals(5, memList.size());
+	}
+	
+	
+	
+	
+	@Test
+	public void selectMemberTotalCntTest() {
 		/***Given***/
 
 		/***When***/
-		int totalCnt = memberDao.selectMemberTotalCnt();
+		int totalCnt = memDao.selectMemberTotalCnt();
 
 		/***Then***/
-		assertEquals(26, totalCnt);
+		assertTrue(totalCnt > 13);
 	}
 	
+	
 	@Test
-	public void insertMember_Test() {
+	public void insertMemberTest() {
 		/***Given***/
-		MemberVo memberVo = new MemberVo("temp", "dditpass", "대덕인재", "개발원", 
-										"", "", "", "", "");
-		/***When***/
-		int insertCnt = memberDao.insertMember(memberVo);
+		MemberVO member = new MemberVO("testuser001", "testuser001", "testuser001", "testuser001", "", "", "", "", "");
 
+		/***When***/
+		int insertCnt = memDao.insertMember(member);
+		
 		/***Then***/
 		assertEquals(1, insertCnt);
 	}
+
+	
+	
 	
 	@Test
-	public void deleteMember() {
+	public void updateMemberTest() {
 		/***Given***/
-		String userid = "brown";
+		MemberVO upmember = new MemberVO("user001", "1234", "1234", "1234", "", "", "", "", "");
+
+		/***When***/
+		int updateCnt = memDao.updateMember(upmember);
 		
-		/***When***/
-		int deleteCnt = memberDao.deleteMember(userid);
-
-		/***Then***/
-		assertEquals(1, deleteCnt);
-	}
-	
-	@Test
-	public void updateMember() {
-		/***Given***/
-		MemberVo memberVo = new MemberVo("brown", "dditpass", "대덕인재", "개발원", 
-										"", "", "", "", "");
-
-		/***When***/
-		int updateCnt = memberDao.updateMember(memberVo);
-
 		/***Then***/
 		assertEquals(1, updateCnt);
 	}
+	
+	
+	
+	
+	
 }
-
-
-
-
-
-
-
-

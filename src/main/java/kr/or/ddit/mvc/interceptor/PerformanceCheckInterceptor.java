@@ -10,30 +10,43 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
 public class PerformanceCheckInterceptor extends HandlerInterceptorAdapter{
+
 	private static final Logger logger = LoggerFactory.getLogger(PerformanceCheckInterceptor.class);
 
+	
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
 		
-		long start = System.currentTimeMillis(); //1ms == 1/1000초
-					//System.nanoTime();	//1ns == 1/1000000000초
+		// 1ms = 1/1000 초
+		// 1ns = 1/1000000000 초
+		long startTime = System.currentTimeMillis();
+		request.setAttribute("startTime", startTime);
 		
-		request.setAttribute("start", start);
-		
-		//true : 다음 인터셉터 호출, 인터셉터가 없을경우 handler(controller)
-		//false : 요청 처리를 멈춤 controller까지 안간다
+		// true : 다음 interceptor 호출, 다음interceptor가 없을 경우 handler(controller)
+		// false : 요청 처리를 멈춘다.
 		return true;
 	}
 	
 	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		
-		long start = (long)request.getAttribute("start");
-		
-		long end = System.currentTimeMillis();
-		logger.debug("end-start: {} {}",handler, (end-start));
+		long endTime = System.currentTimeMillis();
+		logger.debug("endTime : {}", endTime);
+		logger.debug("startTime : {}", (long)request.getAttribute("startTime"));
+		logger.debug("메서드 : {} || 걸린 시간 time : {}", handler, (endTime - (long)request.getAttribute("startTime")));
 	}
+	 
 }
+
+
+
+
+
+
+
+
+
+
+
 

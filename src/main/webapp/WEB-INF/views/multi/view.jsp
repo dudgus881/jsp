@@ -7,12 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Multiparam</h1>
-	<form action="${cp }/multi/submit" method="post" >
-		<input type="text" name="userid" value="brown"/><br>
-		<input type="text" name="userid" value="sally"/><br>
-		<input type="text" name="userid" value="cony"/><br>
-		<input type="submit" value="전송"/>
+
+	<form action="${cp }/multi/submit" method="post">
+		<input type="text" name="userid" value="brown" /><br>
+		<input type="text" name="userid" value="sally" /><br>
+		<input type="text" name="userid" value="ryan" /><br>
+		<input type="submit" value="전송" /><br>	
 	</form>
+
 </body>
 </html>

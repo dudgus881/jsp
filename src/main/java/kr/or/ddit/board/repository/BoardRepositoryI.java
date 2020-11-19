@@ -1,8 +1,9 @@
 package kr.or.ddit.board.repository;
 
-import kr.or.ddit.board.model.BoardVo;
+import kr.or.ddit.board.model.BoardVO;
 
 public interface BoardRepositoryI {
 
-	BoardVo getBoard(int boardNo);
+	BoardVO getBoard(int boardNo);
+	
 }

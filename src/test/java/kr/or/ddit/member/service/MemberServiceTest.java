@@ -9,106 +9,104 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import kr.or.ddit.ModelTestConfig;
-import kr.or.ddit.common.model.PageVo;
-import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.common.model.PageVO;
+import kr.or.ddit.member.ModelTestConfig;
+import kr.or.ddit.member.model.MemberVO;
 
 public class MemberServiceTest extends ModelTestConfig{
 
-	@Resource(name="memberService")
-	private MemberServiceI memberService;
+	@Resource(name = "memberService")
+	private MemberServiceI memService;
+	
 	
 	
 	@Test
 	public void getMemberTest() {
 		/***Given***/
-		String userid = "brown";
 
 		/***When***/
-		MemberVo memberVo = memberService.getMember(userid);
-
+		MemberVO member = memService.getMember("brown");
+		
 		/***Then***/
-		assertEquals("브라운", memberVo.getUsernm());
+		assertEquals("브라운", member.getUsernm());
 	}
 	
-	@Test
-	public void selectAllMemberTest() {
-		/***Given***/
-
-		/***When***/
-		List<MemberVo> memberList = memberService.selectAllMember();
-
-		/***Then***/
-		assertTrue(memberList.size() > 13 );
-	}
+	
 	
 	@Test
-	public void selectMemberPageList() {
+	public void selectMemberPageTest() {
 		/***Given***/
-		PageVo pageVo = new PageVo(1, 5);
-		
+		PageVO pageVO = new PageVO(1, 5);
+
 		/***When***/
-		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
-		
-		List<MemberVo> memberList = (List<MemberVo>)map.get("memberList");
-		int pages = (int)map.get("pages");
+		Map<String, Object> memMap = memService.selectMemberPage(pageVO);
 		
 		/***Then***/
-		assertEquals(5, memberList.size());
+		assertEquals(5, ((List<MemberVO>)memMap.get("memListPage")).size());
 	}
+	
+	
+	
+	
+	
+	
 	@Test
 	public void insertMember_SUCCESS_Test() {
-		/***Given***/
-		MemberVo memberVo = new MemberVo("temp", "dditpass", "대덕인재", "개발원",
-								"", "", "", "", "");
 		
+		/***Given***/
+		MemberVO memVO = new MemberVO("test123", "test123", "test123", "test123", "", "", "", "", "");
+
 		/***When***/
-		int insertCnt = memberService.insertMember(memberVo);
+		int insertCnt = memService.insertMember(memVO);
 		
 		/***Then***/
 		assertEquals(1, insertCnt);
-
+		
 	}
+	
+	
+	
+	
 	
 	//@Test
-//	public void insertMember_FAIL_Test() {
-//		/***Given***/
-//		MemberVo memberVo = new MemberVo("ddit", "dditpass", "대덕인재", "개발원",
-//								"", "", "", "", "");
-//		
-//		/***When***/
-//		int insertCnt = memberService.insertMember(memberVo);
-//		
-//		/***Then***/
-//		assertEquals(1, insertCnt);
-//
-//	}
-	
-	@Test
-	public void deleteMember() {
-		/***Given***/
-		String userid = "brown";
+	public void insertMember_FAIL_Test() {
 		
-		/***When***/
-		int deleteCnt = memberService.deleteMember(userid);
+		/***Given***/
+//		MemberVO memVO = new MemberVO("test123", "test123", "test123", "test123", "", "", "", "", "");
 
+		/***When***/
+//		int insertCnt = memService.insertMember(memVO);
+		
 		/***Then***/
-		assertEquals(1, deleteCnt);
+//		assertEquals(1, insertCnt);
+		
 	}
 	
+	
+	
 	@Test
-	public void updateMember() {
+	public void updateMemberTest() {
 		/***Given***/
-		MemberVo memberVo = new MemberVo("brown", "dditpass", "대덕인재", "개발원", 
-										"", "", "", "", "");
+		MemberVO member = new MemberVO("user001", "update", "update", "update", "", "", "", "", "");
 
 		/***When***/
-		int updateCnt = memberService.updateMember(memberVo);
+		int updateCnt = memService.updateMember(member);
 
 		/***Then***/
 		assertEquals(1, updateCnt);
 	}
 	
 	
+	
+	
+	
+	
+	
 
 }
+
+
+
+
+
+

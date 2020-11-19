@@ -7,20 +7,26 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
+	
 	<!-- advice -->
-<!-- 	<bean id="profilingAdvice" class="kr.or.ddit.aop.ProfilingAdvice"/> -->
+<!-- 	<bean id="profilingAdvice" class="kr.or.ddit.aop.ProfilingAdvice"></bean> -->
 
 	<!-- aop -->
 <!-- 	<aop:config> -->
 <!-- 		<aop:pointcut id="target" expression="execution(* kr.or.ddit..service.*.*(..))" /> -->
 <!-- 		<aop:aspect ref="profilingAdvice"> -->
+			
 <!-- 			<aop:before method="beforeMethod" pointcut-ref="target"/> -->
 <!-- 			<aop:around method="aroundMethod" pointcut-ref="target"/> -->
+			
 <!-- 		</aop:aspect> -->
-<!-- 	</aop:config>	 -->
+<!-- 	</aop:config> -->
 
-	<!-- @Aspect를 부여한 클래스에 대한 설정처리 -->
+	
+	
+	<!-- @Aspect를 부여한 클래스에 대한 설정 처리 -->
 	<aop:aspectj-autoproxy />
+	
 	
 	<!-- @ControllerAdvice -->
 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
@@ -28,4 +34,7 @@
 	</context:component-scan>
 	
 	
+	
+	
+
 </beans>

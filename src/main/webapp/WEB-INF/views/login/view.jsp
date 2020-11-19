@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,105 +11,145 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-<!--     <link rel="icon" href="../../favicon.ico"> -->
+    <link rel="icon" href="${pageContext.request.contextPath}/icon/favicon.ico">
 
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="${pageContext.request.contextPath }/css/signin.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/signin.css" rel="stylesheet">
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/js/js.cookie-2.2.1.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/js.cookie-2.2.1.min.js"></script>
     
-   <script>
-   $(function(){
-      //remember me cookie 확인
-      if( Cookies.get("REMEMBERME") == "Y"){
-         $("input[type=checkbox]").prop("checked", true);
-         $("#inputEmail").val(Cookies.get("USERNM"));   
-      }
+    <script>
 
-      //sign in 버튼이 클릭 되었을 때 이벤트 핸들러
-      $("button").on("click", function(){
-         console.log("button_click");
+		$(function(){
+			// remember me cookie 확인
+// 			if(getCookieValue("REMEMBERME") == "Y"){
+			if(Cookies.get("REMEMBERME") == "Y"){
+				$('#inputEmail').val(getCookieValue("USERNM"))
+// 				$('input:checkbox').remove('checked')
+				$('input[type=checkbox]').prop('checked', true)
+			}
 
-         if($("input[type=checkbox]").prop("checked") == true){
-            Cookies.set("REMEMBERME", "Y");
-            Cookies.set("USERNM", $("#inputEmail").val());
-         }
-         else{
-            Cookies.remove("REMEMBERME");
-            Cookies.remove("USERNM");
-         }
 
-         //submit
-         $("form").submit();
-      });   
-      
-   });
-      function getCookieValue(cookieName){
-         
-         var cookies = document.cookie.split("; ");
-         for(var i = 0; i < cookies.length; i++){
-            var cookie = cookies[i];
-            var cookieArr = cookie.split("=");
+			$('#signIn').on('click', function(){
 
-            /*cookieArr[0]  cookie name
-            cookieArr[1]  cookie value*/
-            if(cookieName == cookieArr[0]){
-               return cookieArr[1]; 
-            }
-         }
-         
-         //원하는 쿠키가 없는경우
-         return "";
-      }
+				if($('input[type=checkbox]').prop('checked') == true){
+					Cookies.set('REMEMBERME', 'Y');
+					Cookies.set('USERNM', $('#inputEmail').val());
+					$('#inputEmail').val(Cookies.get("USERNM"));
 
-      function setCookie(cookieName, cookieValue, expires){
+					
+				}else{
+// 					$('#inputEmail').val("");
+					Cookies.remove('REMEMBERME');
+					Cookies.remove('USERNM');
+				}
 
-         //"USERNM=brown; path=/; expires=Wed, 07 Oct 2020 00:38:35 GMT;"
-         var today = new Date();
+				// submit 처리
+				$('#loginForm').submit();
+			})
 
-         //현재날짜에서 미래로 + expires 만큼 한 날짜 구하기
-         today.setDate( today.getDate() + expires );
-         
-         document.cookie = cookieName + "=" + cookieValue + "; path=/; expires=" + today.toGMTString();
-         console.log(document.cookie);
-      }
 
-      //해당쿠키의 expires속성을 과거날짜로 변경
-      function deleteCookie(cookieName){
-         setCookie(cookieName, "", -1);
-      }
-   </script>
+
+
+
+
+			
+		})
+
+
+		
+		// 버튼클릭시 설정된 쿠키들을 console log에 출력하는 함수
+		function showCookieInfo(){
+			console.log("USERNM = " + getCookieValue("USERNM"));
+			console.log("REMEMBERME = " + getCookieValue("REMEMBERME"));
+			console.log("TEST = " + getCookieValue("TEST"));
+			console.log("NOTEXISTS_COOKIE = " + getCookieValue("NOTEXISTS_COOKIE"));
+		}
+
+
+
+    
+		// 쿠키 setting을 하는 함수
+		function setCookie(cookieName, cookieValue, expires){
+			//"USERNM=brown; path=/; experis=Wed, Oct 07 2020 09:43:14 GMT"
+			var today = new Date();
+			
+			// 현재날짜에서 미래로 + expires만큼 한 날짜 구하기
+			today.setDate(today.getDate() + expires);
+			
+			document.cookie = cookieName + "=" + cookieValue + "; path=/; expires=" + today.toString(); 
+			console.log(document.cookie)
+		}
+
+
+		// 설정된 쿠키의 값들을 반환하는 함수
+		function getCookieValue(cookieName){
+			var cookies = document.cookie.split("; ");
+			for(var info in cookies){
+				var cookie = cookies[info].split("=");
+				if(cookie[0] == cookieName) return cookie[1];
+			}
+			return "";
+		}
+
+		
+
+		// 해당쿠키의 expires속성을 과거의 날짜로 변경
+		function deleteCookie(cookieName){
+			setCookie(cookieName, "", (-1))
+		}
+		
+
+		
+		function setSession(){
+			sessionStorage.setItem("JSESSIONID", "testCode")
+			alert(sessionStorage.getItem("JSESSIONID"))
+		}
+
+		function getSession(){
+			var session = sessionStorage.key(0)
+			alert(session)
+		}
+
+
+		
+    </script>
+    
+    
+    
+    
+    
   </head>
 
   <body>
-	msg : ${msg }<br>
-	msg_s : ${msg_s }<br>
-	<c:remove var="msg_s" scope="session"/>
-	msg_ra : ${msg_ra }
-	
+<%--   	msg : ${msg }<br> --%>
+<%--   	msg_s : ${msg_s }<br> --%>
+<%--   	msg_f : ${msg_f }<br> --%>
+<%--   	<c:remove var="msg_s" scope="session"/> --%>
+
     <div class="container">
-	
-      <form class="form-signin" action="${pageContext.request.contextPath }/login/process" method="post">
-        <h2 class="form-signin-heading"><spring:message code="login.signin"/></h2>
-        <label for="inputEmail" class="sr-only"><spring:message code="login.userid"/></label>
-        <input type="email" id="inputEmail" name="userid" class="form-control" placeholder="Email address" required autofocus value="brown">
-        <label for="inputPassword" class="sr-only"><spring:message code="login.password"/></label>
-        <input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Password" required value="brownPass">
+
+      <form id="loginForm" class="form-signin" action="${pageContext.request.contextPath}/login/process" method="post">
+        <h2 class="form-signin-heading"><spring:message code="login.signin" /></h2>
+        <label for="inputEmail" class="sr-only"><spring:message code="login.userid" /></label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="userid" value="brown" required autofocus>
+        <label for="inputPassword" class="sr-only"><spring:message code="login.password" /></label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pass" value="brownPass" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> <spring:message code="login.rememberme"/>
+            <input type="checkbox" value="remember-me"> <spring:message code="login.rememberme" />
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" id="signIn">Sign in</button>
       </form>
 
     </div> <!-- /container -->
+
   </body>
 </html>
-    

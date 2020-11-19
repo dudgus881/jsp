@@ -7,91 +7,55 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import kr.or.ddit.common.model.PageVo;
-import kr.or.ddit.config.db.MybatisUtil;
-import kr.or.ddit.member.Repository.MemberDao;
-import kr.or.ddit.member.Repository.MemberDaoI;
-import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.common.model.PageVO;
+import kr.or.ddit.db.MybatisUtil;
+import kr.or.ddit.member.dao.MemberDao;
+import kr.or.ddit.member.dao.MemberDaoI;
+import kr.or.ddit.member.model.MemberVO;
 
+@Transactional
 @Service("memberService")
-public class MemberService implements MemberServiceI {
-	private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
-
-	@Resource(name="memberDao")
-	private MemberDaoI memberDao;
+public class MemberService implements MemberServiceI{
 	
-	public MemberService() {
-		//memberDao = new MemberDao();
+	@Resource(name = "memberRepository")
+	private MemberDaoI memDao;
+
+	@Override
+	public MemberVO getMember(String userid) {
+		return memDao.getMember(userid);
 	}
 	
 	@Override
-	public MemberVo getMember(String userId) {
-		return memberDao.getMember(userId);
-	}
-
-	@Override
-	public List<MemberVo> selectAllMember() {
-		return memberDao.selectAllMember();
-	}
-
-	@Override
-	public Map<String, Object> selectMemberPageList(PageVo pageVo) {
+	public Map<String, Object> selectMemberPage(PageVO pageVO) {
 		
-		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		// 동일한 SqlSession 정보를 인자로 전달하여 같은 트렌젝션안에서 처리하도록 한다.
+		// 같은 공간에서 작업
+//		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		List<MemberVO> memListPage = memDao.selectMemberPage(pageVO);
+		int totalCnt = memDao.selectMemberTotalCnt();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("memberList", memberDao.selectMemberPageList(sqlSession, pageVo));
+		int pageCnt = (int) Math.ceil(totalCnt / ((float)pageVO.getPageSize()));
 		
-		//15건, 페이지 사이즈를 7로 가정했을때 3개의 페이지가 나와야한다
-		// 15/7 = 2.14.... 올림을 하여 3개의 페이지가 필요
-		//Math.ceil()
-		int totalCnt = memberDao.selectMemberTotalCnt(sqlSession);
-		int pages = (int)Math.ceil( (double)totalCnt/pageVo.getPageSize());
-		map.put("pages", pages);
+		map.put("memListPage", memListPage);
+		map.put("pageCnt", pageCnt);
 		
-		sqlSession.close();
+//		sqlSession.close();
+		
 		return map;
 	}
 
 	@Override
-	public int insertMember(MemberVo memberVo) {
-		
-//		logger.debug("첫번째 insert 시작전");
-//		memberDao.insertMember(memberVo);
-//		logger.debug("첫번째 insert 종료후");
-		
-		//첫번째 쿼리는 정상적으로 실행되지만
-		// 두번째 쿼리에서 동일한 데이터를 입력하여 PRIMARY KEY 제약조건에 의해
-		// SQL 실행 실패
-		// 첫번째 쿼리는 성공했지만 트랜잭션 설정을 service 레벨에 설정을 하였기 때문에
-		// 서비스 메서드에서 실행된 모드 쿼리를 rollback 처리한다.
-		
-//		logger.debug("두번째 insert 시작전");
-//		memberDao.insertMember(memberVo);
-//		logger.debug("두번째 insert 종료후");
-		
-		return memberDao.insertMember(memberVo);
-	}
-	
-	@Override
-	public int deleteMember(String userid) {
-		return memberDao.deleteMember(userid);
+	public int insertMember(MemberVO memVO) {
+		return memDao.insertMember(memVO);
 	}
 
 	@Override
-	public int updateMember(MemberVo memberVo) {
-		return memberDao.updateMember(memberVo);
+	public int updateMember(MemberVO upMember) {
+		return memDao.updateMember(upMember);
 	}
 
 }
-
-
-
-
-
-
-

@@ -1,23 +1,18 @@
 package kr.or.ddit.member.service;
 
-import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.common.model.PageVo;
-import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.common.model.PageVO;
+import kr.or.ddit.member.model.MemberVO;
 
 public interface MemberServiceI {
 
-	MemberVo getMember(String userId);
+	MemberVO getMember(String userid);
+
+	Map<String, Object> selectMemberPage(PageVO pageVO);
+
+	int insertMember(MemberVO memVO);
+
+	int updateMember(MemberVO upMember);
 	
-	List<MemberVo> selectAllMember();
-
-	Map<String, Object> selectMemberPageList(PageVo pageVo);
-
-	int insertMember(MemberVo memberVo);
-	
-	int deleteMember(String userid);
-
-	int updateMember(MemberVo memberVo);
-
 }
