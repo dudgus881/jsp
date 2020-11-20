@@ -1,0 +1,106 @@
+spring batch
+개발자가 만들어야 하는 부분
+Map<K,V> key,value
+
+reader		: implements ItemReader<T>  : type
+
+processor	: implements ItemProcessor<I,O> : input, output
+
+writer		: implements ItemWriter<T> :
+
+package : kr.or.ddit.batch.basic
+BasicReader <String>
+BasicProcessor <String,String>
+BasicWriter <String>
+
+Cron 초 분 시 일 월 요일
+모든 값 : *
+1 * * * * * : 매 1초 마다 실행( 1분 1초, 2분 1초, 3분 1초....)
+*/5 * * * * * : 5초마다 실행
+
+
+발효유 배치
+cycle 정보를 조회하여 해당 애음 요일에 해당하는 일자를 계산
+daily 테이블에 데이터를 입력
+
+spring batch의 골격
+reader  	: cycle테이블 정보를 조회
+	SELECT *
+	FROM cycle
+processor  	: 애음요일을 실제 일자로 바꾸는 작업 ( 1==> 4~6)
+writer  	: daily 테이블에 정보를 저장
+
+---------------------
+processor<I,String>		writer
+String				==> List<String>
+List<DailyVo>		==> List<List<DailyVo>>
+
+--------------------------------------------------
+공부할것들
+web : Tacademy
+
+jsp/servlet
+header first 
+java servlet specification
+---
+spring
+코드로 배우는 스프링 웹프로젝트(초급)spring
+
+토비의 스프링 3.x(중급)
+spring 사이트
+스타트 스프링 부트(스프링부트)
+---
+test코드
+테스트 주도개발(오픈됨)
+--
+design pattern(나중에 기회있을때)
+head first - design pattern
+--
+SQL(SQLD)
+sql 전문가 가이트
+
+전문가로 가는 지름길
+http://blog.daum.net/why_i_am
+(15장 다음에 실습 스크립트 게시물 있음
+17장은 하지 말것 - 행렬계산?)
+
+----
+oracle - sql
+불친절한 SQL 프로그래밍
+
+-----
+data modeling
+이론과 실무를 겸비한 전략서
+관계형 데이터 모델링(계정판 찾아볼것)
+
+----
+DB(DBMS 내부원리 -> SQLP/DAP)
+새로쓴 대용량 데이터 베이스 솔루션
+오라클 성능 고도화 원리와 해법1
+오라클 성능 고도화 원리와 해법2
+
+정리
+-------------------------------------
+필수
+각각 게시판 작성				JSP/Servlet		Spring
+
+SI/SM 업무의 베이스는					SQL
+데이터
+
+언제까지 시키는 것만						Modeling
+할건가
+
+									관심 사항
+
+
+
+
+
+
+
+
+
+
+
+
+

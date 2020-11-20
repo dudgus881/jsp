@@ -86,7 +86,7 @@ public class IocCollectionTest {
 		prop = collectionBean.getProperties();
 		
 		/***Then***/
-		assertEquals("SHS", prop.get("jdbc.user"));
+		assertEquals("YYH", prop.get("jdbc.user"));
 	}
 	
 	

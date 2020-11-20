@@ -31,7 +31,7 @@ public class PropertyPlaceholderTest {
 
 		
 		/***Then***/
-		assertEquals("SHS", dbProperty.getUser());
+		assertEquals("YYH", dbProperty.getUser());
 		assertEquals("java", dbProperty.getPass());
 	}
 

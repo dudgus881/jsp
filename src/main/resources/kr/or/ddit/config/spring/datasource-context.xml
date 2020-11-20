@@ -34,9 +34,6 @@
 	</bean>
 	
 	
-	
-	
-	
 	<!-- sqlSession 역할을 수행하는 bean -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
